@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 7%;        /* #0d1117 - GitHub's darker background */
+    --foreground: 213 14% 85%;       /* #e6edf3 - GitHub's brighter text */
+    
+    --card: 215 14% 16%;             /* #21262d - GitHub's elevated surface */
+    --card-foreground: 213 14% 85%;  /* #e6edf3 */
+    
+    --popover: 215 14% 16%;          /* #21262d */
+    --popover-foreground: 213 14% 85%; /* #e6edf3 */
+    
+    --primary: 212 100% 45%;         /* #238636 - GitHub's blue */
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    
+    --secondary: 213 14% 23%;        /* #30363d - GitHub's secondary button */
+    --secondary-foreground: 213 14% 85%; /* #e6edf3 */
+    
+    --muted: 213 14% 23%;           /* #30363d */
+    --muted-foreground: 215 14% 65%; /* #8b949e - GitHub's muted text */
+    
+    --accent: 213 14% 23%;          /* #30363d */
+    --accent-foreground: 213 14% 85%; /* #e6edf3 */
+    
+    --destructive: 0 75% 50%;       /* #da3633 - GitHub's red */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    
+    --border: 213 14% 25%;          /* #373e47 - GitHub's border */
+    --input: 213 14% 25%;           /* #373e47 */
+    --ring: 212 100% 45%;           /* #238636 */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 252 59% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  :root[data-theme="dark"] {
+    --background: 215 21% 11%;      /* #0d1117 - GitHub's main dark bg */
+    --foreground: 210 18% 85%;      /* #c9d1d9 - GitHub's main text */
+    
+    --card: 215 21% 13%;            /* #161b22 - GitHub's card/container bg */
+    --card-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --popover: 215 21% 13%;         /* #161b22 */
+    --popover-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --primary: 212 92% 45%;         /* #1f6feb - GitHub's blue */
+    --primary-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --secondary: 215 21% 15%;       /* #21262d - GitHub's button bg */
+    --secondary-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --muted: 215 21% 15%;          /* #21262d */
+    --muted-foreground: 215 20% 65%; /* #8b949e - GitHub's muted text */
+    
+    --accent: 215 21% 15%;         /* #21262d */
+    --accent-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --destructive: 0 72% 51%;      /* #da3633 - GitHub's red */
+    --destructive-foreground: 210 18% 85%; /* #c9d1d9 */
+    
+    --border: 215 21% 18%;         /* #30363d - GitHub's border color */
+    --input: 215 21% 18%;          /* #30363d */
+    --ring: 212 92% 45%;           /* #1f6feb */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .dashboard-card {
+    @apply bg-card p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300;
+  }
+  
+  .stat-card {
+    @apply dashboard-card flex flex-col;
+  }
+  
+  .stat-value {
+    @apply text-3xl font-bold mt-2;
+  }
+  
+  .stat-label {
+    @apply text-muted-foreground text-sm;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-900/30 text-yellow-300 text-xs px-2 py-1 rounded-full;
+  }
+  
+  .badge-danger {
+    @apply bg-red-900/30 text-red-300 text-xs px-2 py-1 rounded-full;
+  }
+  
+  .badge-success {
+    @apply bg-green-900/30 text-green-300 text-xs px-2 py-1 rounded-full;
+  }
+}
+
+/* Add these styles for the Sonner toast container */
+[data-sonner-toaster] {
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  gap: 8px !important;
+}
+
+/* Add smooth scrolling and styled scrollbar */
+[data-sonner-toaster]::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-sonner-toaster]::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+  border-radius: 8px;
+}
+
+[data-sonner-toaster]::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 8px;
+}
+
+[data-sonner-toaster]::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
